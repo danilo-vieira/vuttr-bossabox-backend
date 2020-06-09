@@ -45,11 +45,13 @@ export default class FakeUsersRepository implements IUsersRepository {
     return user;
   }
 
-  public async delete(user: User): Promise<void> {
+  public async delete(user: User): Promise<User> {
     const userIndex = this.users.findIndex(
       userOfArr => userOfArr.id === user.id,
     );
 
     this.users.splice(userIndex, 1);
+
+    return user;
   }
 }

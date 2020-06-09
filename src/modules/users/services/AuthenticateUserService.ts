@@ -14,7 +14,7 @@ interface IRequest {
   password: string;
 }
 
-interface IResponse {
+export interface IResponse {
   user: User;
   token: string;
 }
