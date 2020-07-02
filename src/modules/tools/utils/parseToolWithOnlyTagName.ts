@@ -1,6 +1,6 @@
 import Tool from '../infra/typeorm/entities/Tool';
 
-interface IResponse {
+export interface IResponse {
   user_id: string;
   id: string;
   title: string;

@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 import '../../modules/users/providers';
 
 import IUsersRepository from '../../modules/users/repositories/IUsersRepository';
-import UsersRepositories from '../../modules/users/infra/typeorm/repositories/UsersRespository';
+import UsersRepository from '../../modules/users/infra/typeorm/repositories/UsersRespository';
 
 import IToolsRepository from '../../modules/tools/repositories/IToolsRepository';
 import ToolsRepository from '../../modules/tools/infra/typeorm/repositories/ToolsRepository';
@@ -13,7 +13,7 @@ import TagsRepository from '../../modules/tags/infra/typeorm/repositories/TagsRe
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
-  UsersRepositories,
+  UsersRepository,
 );
 
 container.registerSingleton<IToolsRepository>(

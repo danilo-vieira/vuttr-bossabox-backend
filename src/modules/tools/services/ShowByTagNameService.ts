@@ -4,16 +4,14 @@ import AppError from '../../../shared/errors/AppError';
 
 import IUsersRepository from '../../users/repositories/IUsersRepository';
 import IToolsRepository from '../repositories/IToolsRepository';
-import parseToolWithOnlyTagName from '../utils/parseToolWithOnlyTagName';
+import parseToolWithOnlyTagName, {
+  IResponse,
+} from '../utils/parseToolWithOnlyTagName';
 
 interface IRequest {
   user_id: string;
   tag_name: string | undefined;
 }
-
-type IResponse = Array<{
-  tags: string[];
-}>;
 
 @injectable()
 export default class ShowByTagNameService {
@@ -25,7 +23,7 @@ export default class ShowByTagNameService {
     private toolsRepository: IToolsRepository,
   ) {}
 
-  public async execute({ user_id, tag_name }: IRequest): Promise<IResponse> {
+  public async execute({ user_id, tag_name }: IRequest): Promise<IResponse[]> {
     const userFound = await this.usersRepository.findById(user_id);
 
     if (!userFound) {
