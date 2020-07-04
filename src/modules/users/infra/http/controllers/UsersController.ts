@@ -16,6 +16,6 @@ export default class UsersController {
       password,
     });
 
-    return response.json(classToClass(createdUser));
+    return response.status(201).json(classToClass(createdUser));
   }
 }
