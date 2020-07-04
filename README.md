@@ -50,16 +50,16 @@ ATENTION: The following steps is for **Linux**. If you have another SO, just sea
 
 ### Make a Clone
 
-  You can just download by the green button on right top [this page](https://github.com/danilo-vieira/vuttr-bossabox).
+  You can just download by the green button on right top [this page](https://github.com/danilo-vieira/vuttr-bossabox-backend).
 
   Or with Git Bash:
 
   ```bash
   # make a clone of this repository
-  git clone https://github.com/danilo-vieira/vuttr-bossabox.git
+  git clone https://github.com/danilo-vieira/vuttr-bossabox-backend.git
 
   # go to the downloaded folder
-  cd vuttr-bossabox
+  cd vuttr-bossabox-backend
   ```
 
 ### **Opening the Project**
