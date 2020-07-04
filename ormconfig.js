@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 
 dotenv.config({
-  path: process.env.NODE_ENV === 'dev' ? '.env.dev' : '.env.prod'
+  path: process.env.NODE_ENV === 'dev' ? '.env.dev' : '.env'
 });
 
 module.exports = {
