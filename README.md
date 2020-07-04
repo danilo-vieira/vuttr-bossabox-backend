@@ -74,6 +74,10 @@ ATENTION: The following steps is for **Linux**. If you have another SO, just sea
 
 You can just run `yarn dev:server` and the server will be started
 
+### ✨ **API Reference**
+
+All routes can be found at [API Blueprint reference](https://danilo-vieira.github.io/)
+
 Developed with ❤ by [Danilo Vieira](https://github.com/danilo-vieira/)
 
 Social medias:
