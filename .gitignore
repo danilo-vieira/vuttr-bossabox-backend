@@ -1,6 +1,7 @@
 node_modules/
-build/
+dist/
 coverage/
-.env
+.env.dev
+.env.prod
 ormconfig.json
 
