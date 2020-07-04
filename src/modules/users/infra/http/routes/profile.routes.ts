@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { celebrate, Segments, Joi } from 'celebrate';
 
 import ProfileController from '../controllers/ProfileController';
 
@@ -9,6 +10,14 @@ const profileController = new ProfileController();
 
 profileRouter.use(ensureAuthenticated);
 
-profileRouter.delete('/', profileController.delete);
+profileRouter.delete(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      password: Joi.string().required(),
+    },
+  }),
+  profileController.delete,
+);
 
 export default profileRouter;
