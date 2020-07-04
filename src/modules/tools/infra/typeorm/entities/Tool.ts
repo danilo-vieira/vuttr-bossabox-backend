@@ -21,7 +21,7 @@ export default class Tool {
   @Column('uuid')
   user_id: string;
 
-  @ManyToOne(() => User, user => user.tools, {
+  @ManyToOne(() => User, {
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   })
