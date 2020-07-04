@@ -10,23 +10,159 @@ HOST: https://vuttrbossabox-backend.herokuapp.com
 + Request Create an user account
   + Headers
 
-    Content-Type: application/json
+              Content-Type: application/json
   + Attributes (UserAttr)
 
 + Response 201 (application/json)
   + Attributes (CreatedUser)
 
++ Response 400 (application/json)
+  + Attributes (AppError)
+
+## Authenticate Users [/sessions]
+
+### Authenticate user [POST]
+
++ Request Authenticate an existing user account
+  + Headers
+
+              Content-Type: application/json
+  + Attributes (AuthUserAttr)
+
++ Response 200 (application/json)
+  + Attributes (AuthResponseAttr)
+
++ Response 400 (application/json)
+  + Attributes (AppError)
+
+## Delete Users [/profile]
+
+### Delete user [DELETE]
+
++ Request Delete an existing user account
+  + Headers
+
+              Content-Type: application/json
+              Authorization: (string) - User token
+  + Attributes (DeleteUser)
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+  + Attributes (AppError)
+
+# Group Tools
+
+## Create/Show Tools [/tools]
+
+### Create a Tool [POST]
+
++ Request Create a Tool
+  + Headers
+
+              Content-Type: application/json
+              Authorization: (string) - User token
+
+  + Attributes (CreateTool)
+
++ Response 201 (application/json)
+  + Attributes (ResponseTool)
+
+### Show All Tools From User [GET]
+
++ Request Show all tools from authenticated user
+  + Headers
+
+              Content-Type: application/json
+              Authorization: (string) - User token
+
++ Response 200 (application/json)
+  + Attributes (ToolsList)
+
++ Response 400 (application/json)
+  + Attributes (AppError)
+
+## Update/Delete Tools [/tools/{id}]
+
++ Parameters
+  + id (string, required) - Tool id
+
+### Update Tool Data [PUT]
+
++ Request Update Tool Data
+  + Headers
+
+            Content-Type: application/json
+            Authorization: (string) - User token
+
+  + Attributes (UpdateTool)
+
++ Response 200 (application/json)
+  + Attributes (ResponseUpdatedTool)
+
++ Response 400 (application/json)
+  + Attributes (AppError)
+
+### Delete Tool [DELETE]
+
++ Request Delete Tool
+
+  + Headers
+
+            Content-Type: application/json
+            Authorization: (string) - User token
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+  + Attributes (AppError)
+
+
 # Data Structures
 
 ## UserAttr (object)
-+ name (string) - Name of user
-+ email (string) - E-mail address for user login
-+ password (string) - Password for user login
++ name: John Doe (string) - Name of user
++ email: johndoe@example.com (string) - E-mail address for user login
++ password: 123456 (string) - Password for user login
 
 ## CreatedUser (object)
-+ name (string) - Name of user
-+ email (string) - E-mail address for user login
-  "tool_id": null,
-  "id": "9f5ae48b-caf8-4b6b-ba57-53c5eefb3dd6",
-  "created_at": "2020-07-04T04:44:02.123Z",
-  "updated_at": "2020-07-04T04:44:02.123Z"
++ id: `21642b8b-7cc6-4770-9da0-c7d2f1bdd494` (string) - User id
++ name: John Doe (string) - Name of user
++ email: johndoe@example.com (string) - E-mail address for user login
++ created_at: `2020-07-04T05:25:21.748Z` (string) - User created at timestamp
++ updated_at: `2020-07-04T05:25:21.748Z` (string) - User updated at timestamp
+
+## AppError (object)
++ status: Status Error (string) - Request status
++ message: Message Error (string) - Error message
+
+## AuthUserAttr (object)
++ email: johndoe@example.com (string) - User email
++ password: 123456 (string) - User password
+
+## AuthResponseAttr (object)
++ user (CreatedUser) - User data
++ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1OTM4NDAzMjQsImV4cCI6MTU5MzkyNjcyNCwic3ViIjoiMjE2NDJiOGItN2NjNi00NzcwLTlkYTAtYzdkMmYxYmRkNDk0In0.XQkJM1ylKgB2fdCozXAIBVpeXfS65MuI9SkVRcgogqs (string) - Token for authenticate user
+
+## DeleteUser (object)
++ password: 123456 (string) - User's password
+
+## CreateTool (object)
++ title: Notion (string) - Tool title
++ link: https://notion.so (string) - Tool link
++ description: All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized. (string) - Tool description
++ tags: organization, planning, collaboration, writing, calendar (array[string]) - Tool tags
+
+## UpdateTool (object)
++ title: json-server (string) - New tool title
++ link: https://github.com/typicode/json-server (string) - New tool link
++ description: Fake REST API based on a json schema. Useful for mocking and creating APIs for front-end devs to consume in coding challenges. - New tool description
++ tags: api, json, schema, node, github, rest (array[string]) - New tool tags
+
+## ResponseTool (CreateTool)
++ id: `c3d4ae57-710f-4cee-b8c3-8bc39b089494` (string) - Tool id
+
+## ResponseUpdatedTool (UpdateTool)
++ id: `c3d4ae57-710f-4cee-b8c3-8bc39b089494`
+
+## ToolsList (array[ResponseTool])
