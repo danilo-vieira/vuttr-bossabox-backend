@@ -4,12 +4,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
-  JoinColumn,
 } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
-import Tool from '../../../../tools/infra/typeorm/entities/Tool';
 
 @Entity('users')
 export default class User {
@@ -25,13 +22,6 @@ export default class User {
   @Column()
   @Exclude()
   password: string;
-
-  @Column('uuid', { nullable: true })
-  tool_id: string;
-
-  @OneToMany(() => Tool, tool => tool.user)
-  @JoinColumn({ name: 'tool_id' })
-  tools: Tool[];
 
   @CreateDateColumn()
   created_at: Date;
